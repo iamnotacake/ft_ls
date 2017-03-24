@@ -6,3 +6,6 @@ _*
 *.o
 a.out
 ft_ls
+
+ft_printf/.*
+ft_printf/author
