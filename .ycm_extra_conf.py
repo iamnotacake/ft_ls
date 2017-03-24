@@ -38,7 +38,6 @@ flags = [
     'c',
     '-I.',
     '-Wall',
-    '-Werror',
     '-Wextra',
 ]
 
