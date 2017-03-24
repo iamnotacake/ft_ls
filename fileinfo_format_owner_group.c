@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileinfo_format.c                                  :+:      :+:    :+:   */
+/*   fileinfo_format_owner_group.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 16:18:23 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 18:36:16 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/24 18:34:38 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/24 18:43:33 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			fileinfo_format(t_fileinfo *fi)
+void			fileinfo_format_owner_group(t_fileinfo *fi)
 {
-	fileinfo_format_perms(fi);
-	fileinfo_format_nlinks(fi);
-	fileinfo_format_owner_name(fi);
-	fileinfo_format_owner_group(fi);
+	ft_sprintf(fi->fmt_owner_group, "%s ", fi->grp->gr_name);
 }
