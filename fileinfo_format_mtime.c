@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileinfo_format_owner_group.c                      :+:      :+:    :+:   */
+/*   fileinfo_format_mtime.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 18:34:38 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 19:35:55 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/24 19:20:08 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/24 19:34:48 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			fileinfo_format_owner_group(t_fileinfo *fi)
+void			fileinfo_format_mtime(t_fileinfo *fi)
 {
-	ft_sprintf(fi->fmt_owner_group, "%s ", fi->grp->gr_name);
+	char		*tm;
+
+	tm = ctime(&fi->stat.st_mtime);
+	ft_sprintf(fi->fmt_mtime, " %.12s", tm + 4);
 }
