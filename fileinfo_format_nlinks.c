@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileinfo_format.c                                  :+:      :+:    :+:   */
+/*   fileinfo_format_nlinks.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 16:18:23 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 17:17:00 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/24 17:15:15 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/24 17:28:56 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			fileinfo_format(t_fileinfo *fi)
+void			fileinfo_format_nlinks(t_fileinfo *fi)
 {
-	fileinfo_format_perms(fi);
-	fileinfo_format_nlinks(fi);
+	ft_sprintf(fi->fmt_nlinks, "%d ", fi->stat.st_nlink);
 }

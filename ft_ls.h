@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 17:00:18 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:17:00 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_fileinfo
 	struct stat	stat;
 	char		xattr[4096];
 	char		fmt_perms[16];
+	char		fmt_nlinks[8];
 }				t_fileinfo;
 
 bool			g_params[256];
@@ -40,5 +41,6 @@ bool			fileinfo_get(t_fileinfo *fi, const char *filename);
 
 void			fileinfo_format(t_fileinfo *fi);
 void			fileinfo_format_perms(t_fileinfo *fi);
+void			fileinfo_format_nlinks(t_fileinfo *fi);
 
 #endif
