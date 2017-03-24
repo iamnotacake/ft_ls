@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 16:02:33 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:00:18 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __FT_LS_H
 
 # include <sys/stat.h>
+# include <sys/xattr.h>
 # include <stdbool.h>
 # include "ft_printf.h"
 
@@ -24,6 +25,8 @@
 typedef struct	s_fileinfo
 {
 	struct stat	stat;
+	char		xattr[4096];
+	char		fmt_perms[16];
 }				t_fileinfo;
 
 bool			g_params[256];
@@ -32,5 +35,10 @@ void			arg_error(char chr);
 void			arg_parse(int argc,
 							char *argv[],
 							char *(*args[]));
+
+bool			fileinfo_get(t_fileinfo *fi, const char *filename);
+
+void			fileinfo_format(t_fileinfo *fi);
+void			fileinfo_format_perms(t_fileinfo *fi);
 
 #endif
