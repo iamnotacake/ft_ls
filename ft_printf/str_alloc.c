@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:51:11 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:01:02 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:30:35 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			str_realloc(t_str *str, int need)
 
 	need += need % ALLOC_CHUNK;
 	new_capacity = str->capacity + need;
-	new_string = (char *)malloc(new_capacity);
+	new_string = (char *)malloc(new_capacity + 1);
 	if (str->length > 0)
 	{
 		MEMCPY(new_string, str->string, str->length);
