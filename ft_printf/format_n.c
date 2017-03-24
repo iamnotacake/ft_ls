@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   format_n.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 14:13:34 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/23 19:08:30 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/23 19:12:06 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FT_LS_H
-# define __FT_LS_H
+#include "ft_printf.h"
 
-# include "ft_printf.h"
-
-#endif
+void			format_n(t_fmt *fmt, va_list ap)
+{
+	(void)fmt;
+	*(va_arg(ap, int *)) = g_res.length;
+}

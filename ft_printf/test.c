@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 14:13:34 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 17:36:37 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 17:45:33 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FT_LS_H
-# define __FT_LS_H
+#include <stdio.h>
+#include "ft_printf.h"
 
-# include "ft_printf.h"
-
-#endif
+int			main(void)
+{
+	ft_printf("% +5.2lld\n");
+	return (0);
+}

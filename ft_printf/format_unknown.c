@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   format_unknown.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 14:13:34 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 18:30:35 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 19:01:24 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FT_LS_H
-# define __FT_LS_H
+#include "ft_printf.h"
 
-# include "ft_printf.h"
-
-#endif
+void			format_unknown(t_fmt *fmt)
+{
+	if (fmt->has_width && !fmt->f_minus)
+		APPEND_CHAR_N(fmt->f_zero ? '0' : ' ', fmt->width - 1);
+	APPEND_CHAR(fmt->type);
+	if (fmt->has_width && fmt->f_minus)
+		APPEND_CHAR_N(' ', fmt->width - 1);
+}

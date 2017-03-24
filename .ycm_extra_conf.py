@@ -39,6 +39,7 @@ flags = [
     '-I.',
     '-Wall',
     '-Wextra',
+    '-Ift_printf',
 ]
 
 
