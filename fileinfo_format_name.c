@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileinfo_format.c                                  :+:      :+:    :+:   */
+/*   fileinfo_format_name.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 16:18:23 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 19:51:19 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/24 19:43:21 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/24 19:52:43 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			fileinfo_format(t_fileinfo *fi)
+void			fileinfo_format_name(t_fileinfo *fi)
 {
-	fileinfo_format_perms(fi);
-	fileinfo_format_nlinks(fi);
-	fileinfo_format_owner_name(fi);
-	fileinfo_format_owner_group(fi);
-	fileinfo_format_size(fi);
-	fileinfo_format_mtime(fi);
-	fileinfo_format_name(fi);
+	__builtin_strcpy(fi->fmt_name, fi->name);
 }

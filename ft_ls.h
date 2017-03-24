@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 19:24:54 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/24 19:47:01 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ typedef struct	s_fileinfo
 	struct passwd	*pwd;
 	struct group	*grp;
 	char			xattr[4096];
+	char			name[256];
 	char			fmt_perms[16];
 	char			fmt_nlinks[8];
 	char			fmt_owner_name[32];
 	char			fmt_owner_group[32];
 	char			fmt_size[16];
 	char			fmt_mtime[24];
+	char			fmt_name[512];
 }				t_fileinfo;
 
 bool			g_params[256];
@@ -55,5 +57,6 @@ void			fileinfo_format_owner_name(t_fileinfo *fi);
 void			fileinfo_format_owner_group(t_fileinfo *fi);
 void			fileinfo_format_size(t_fileinfo *fi);
 void			fileinfo_format_mtime(t_fileinfo *fi);
+void			fileinfo_format_name(t_fileinfo *fi);
 
 #endif
