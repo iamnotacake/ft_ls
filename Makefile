@@ -6,7 +6,7 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/24 13:09:20 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/24 18:35:22 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/24 19:04:30 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SOURCES = main.c \
 		  fileinfo_format_perms.c \
 		  fileinfo_format_nlinks.c \
 		  fileinfo_format_owner_name.c \
-		  fileinfo_format_owner_group.c
+		  fileinfo_format_owner_group.c \
+		  fileinfo_format_size.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = ft_ls
 
