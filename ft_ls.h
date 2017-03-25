@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 15:37:09 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:35:16 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <time.h>
 # include "ft_printf.h"
+# include "vec.h"
 
 # define PROGNAME "ft_ls"
 
