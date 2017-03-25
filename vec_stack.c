@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec.h                                              :+:      :+:    :+:   */
+/*   vec_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/25 16:05:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 16:29:22 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/25 16:23:23 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/25 16:28:50 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __VEC_H
-# define __VEC_H
+#include <stdlib.h>
+#include "vec.h"
 
-typedef struct	s_vec
+void			vec_push(t_vec *vec, void *item)
 {
-	void	**data;
-	int		length;
-	int		capacity;
-}				t_vec;
+	if (vec->length == vec->capacity)
+		vec_realloc(vec, 1);
+	vec->data[vec->length++] = item;
+}
 
-void			vec_init(t_vec *vec);
-void			vec_realloc(t_vec *vec, int need);
-void			vec_free(t_vec *vec);
-
-void			vec_push(t_vec *vec, void *item);
-void			*vec_pop(t_vec *vec);
-
-#endif
+void			*vec_pop(t_vec *vec)
+{
+	if (vec->length > 0)
+		return (vec->data[--vec->length]);
+	return (NULL);
+}
