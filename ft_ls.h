@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 16:35:16 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 19:55:55 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ typedef struct	s_fileinfo
 	char			fmt_name[512];
 }				t_fileinfo;
 
+typedef struct	s_list
+{
+	char		path[512];
+	bool		print_path;
+	t_fileinfo	fileinfo;
+	t_vec		items;
+}				t_list;
+
 bool			g_params[256];
 
 void			arg_error(char chr);
@@ -60,5 +68,7 @@ void			fileinfo_format_owner_group(t_fileinfo *fi);
 void			fileinfo_format_size(t_fileinfo *fi);
 void			fileinfo_format_mtime(t_fileinfo *fi);
 void			fileinfo_format_name(t_fileinfo *fi);
+
+void			ls_pre_main(t_vec *list);
 
 #endif
