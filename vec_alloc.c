@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 16:07:41 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 16:26:39 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:43:56 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,16 @@ void			vec_realloc(t_vec *vec, int need)
 	vec->capacity = new_capacity;
 }
 
-void			vec_free(t_vec *vec)
+void			vec_free(t_vec *vec, bool free_elems)
 {
+	int			i;
+
+	if (vec->length > 0 && free_elems)
+	{
+		i = 0;
+		while (i < vec->length)
+			free(vec->data[i++]);
+	}
 	if (vec->capacity > 0)
 	{
 		free(vec->data);
