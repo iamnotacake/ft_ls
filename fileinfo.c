@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 16:02:47 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 15:25:35 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 15:37:54 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char		*fullname_to_filename(const char *fullname)
 	return (filename);
 }
 
-bool			fileinfo_get(t_fileinfo *fi, const char *filename)
+bool			fileinfo_get(t_fileinfo *fi, const char *filename, bool single)
 {
 	__builtin_bzero(fi, sizeof(t_fileinfo));
 	if (lstat(filename, &fi->stat) == -1)
@@ -36,6 +36,7 @@ bool			fileinfo_get(t_fileinfo *fi, const char *filename)
 		return (false);
 	if (g_params['l'] && (fi->grp = getgrgid(fi->stat.st_gid)) == NULL)
 		return (false);
-	__builtin_strcpy(fi->name, fullname_to_filename(filename));
+	__builtin_strcpy(fi->name,
+						single ? filename : fullname_to_filename(filename));
 	return (true);
 }

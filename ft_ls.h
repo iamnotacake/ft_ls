@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 15:16:29 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 15:37:09 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			arg_parse(int argc,
 							char *argv[],
 							char *(*args[]));
 
-bool			fileinfo_get(t_fileinfo *fi, const char *filename);
+bool			fileinfo_get(t_fileinfo *fi, const char *filename, bool single);
 
 void			fileinfo_format(t_fileinfo *fi);
 void			fileinfo_format_perms(t_fileinfo *fi);
