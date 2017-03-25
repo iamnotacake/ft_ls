@@ -6,7 +6,7 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/24 13:09:20 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/24 19:43:39 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/25 17:34:18 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SOURCES = main.c \
 		  fileinfo_format_owner_group.c \
 		  fileinfo_format_size.c \
 		  fileinfo_format_mtime.c \
-		  fileinfo_format_name.c
+		  fileinfo_format_name.c \
+		  vec_alloc.c \
+		  vec_stack.c \
+		  vec_iter.c \
+		  vec_sort.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = ft_ls
 
