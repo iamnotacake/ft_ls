@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 19:02:41 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:26:37 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int				ft_sprintf(char *dest, const char *format, ...)
 			APPEND_CHAR(*(format++));
 	}
 	va_end(ap);
+	g_res.string[g_res.length] = '\0';
 	STRCPY(dest, g_res.string);
 	res = g_res.length;
 	str_free(&g_res);
@@ -107,6 +108,7 @@ int				ft_asprintf(char **dest, const char *format, ...)
 			APPEND_CHAR(*(format++));
 	}
 	va_end(ap);
+	g_res.string[g_res.length] = '\0';
 	*dest = g_res.string;
 	return (g_res.length);
 }

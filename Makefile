@@ -6,7 +6,7 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/24 13:09:20 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/24 15:05:15 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/24 19:43:39 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,16 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Ift_printf
 LDFLAGS = -Lft_printf -lftprintf
 SOURCES = main.c \
-		  arg_parser.c
+		  arg_parser.c \
+		  fileinfo.c \
+		  fileinfo_format.c \
+		  fileinfo_format_perms.c \
+		  fileinfo_format_nlinks.c \
+		  fileinfo_format_owner_name.c \
+		  fileinfo_format_owner_group.c \
+		  fileinfo_format_size.c \
+		  fileinfo_format_mtime.c \
+		  fileinfo_format_name.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = ft_ls
 
