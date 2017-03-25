@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 16:05:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 17:25:31 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/25 17:29:11 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ void			*vec_pop(t_vec *vec);
 
 void			vec_iter(t_vec *vec, void (*func)(void *));
 void			vec_enumerate(t_vec *vec, void (*func)(int, void *));
+
+void			vec_sort_qsort(t_vec *vec,
+								int (*compare)(const void *, const void *));
 
 #endif
