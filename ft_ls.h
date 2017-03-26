@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:08:23 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:43:16 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include <stdbool.h>
+# include <string.h>
 # include <time.h>
 # include "ft_printf.h"
 # include "vec.h"
@@ -36,7 +37,9 @@ typedef struct	s_fileinfo
 	char			lnk_dest[256];
 	char			fmt_perms[16];
 	char			fmt_nlinks[8];
+	int				fmt_nlinks_pad;
 	char			fmt_owner_name[32];
+	int				fmt_owner_name_pad;
 	char			fmt_owner_group[32];
 	char			fmt_size[16];
 	char			fmt_mtime[24];
@@ -75,5 +78,8 @@ void			ls_main_singles(t_fileinfo **fi, int count);
 void			ls_main_dirs(t_fileinfo **fi, int count, bool x);
 
 void			ls_print_list(t_list *list);
+
+void			ls_print_list_prepare_nlinks_pad(t_list *list);
+void			ls_print_list_prepare_owner_name_pad(t_list *list);
 
 #endif
