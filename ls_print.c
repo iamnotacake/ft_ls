@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:53:45 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:54:30 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:59:52 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		ls_print_list_callback(void *arg)
 	ft_printf("%*s", fi->fmt_nlinks_pad, fi->fmt_nlinks);
 	ft_printf("%-*s", fi->fmt_owner_name_pad, fi->fmt_owner_name);
 	ft_printf("%-*s", fi->fmt_owner_group_pad, fi->fmt_owner_group);
-	ft_printf("%s", fi->fmt_size);
+	ft_printf("%*s", fi->fmt_size_pad, fi->fmt_size);
 	ft_printf("%s", fi->fmt_mtime);
 	ft_printf("%s\n", fi->fmt_name);
 }
@@ -41,7 +41,7 @@ static void		ls_print_list_prepare(t_list *list)
 	ls_print_list_prepare_nlinks_pad(list);
 	ls_print_list_prepare_owner_name_pad(list);
 	ls_print_list_prepare_owner_group_pad(list);
-	// TODO: Calculate paddings
+	ls_print_list_prepare_size_pad(list);
 }
 
 void			ls_print_list(t_list *list)

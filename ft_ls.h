@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:54:08 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:57:02 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_fileinfo
 	char			fmt_owner_group[32];
 	int				fmt_owner_group_pad;
 	char			fmt_size[16];
+	int				fmt_size_pad;
 	char			fmt_mtime[24];
 	char			fmt_name[512];
 }				t_fileinfo;
@@ -83,5 +84,6 @@ void			ls_print_list(t_list *list);
 void			ls_print_list_prepare_nlinks_pad(t_list *list);
 void			ls_print_list_prepare_owner_name_pad(t_list *list);
 void			ls_print_list_prepare_owner_group_pad(t_list *list);
+void			ls_print_list_prepare_size_pad(t_list *list);
 
 #endif

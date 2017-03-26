@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/26 18:39:33 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:53:59 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:56:53 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ void			ls_print_list_prepare_owner_group_pad(t_list *list)
 	i = -1;
 	while (++i < list->items.length)
 		VEC_NTH(&list->items, i, t_fileinfo *)->fmt_owner_group_pad = padding;
+}
+
+void			ls_print_list_prepare_size_pad(t_list *list)
+{
+	int			i;
+	int			padding;
+
+	padding = 0;
+	i = -1;
+	while (++i < list->items.length)
+		padding = ft_max(padding,
+			strlen(VEC_NTH(&list->items, i, t_fileinfo *)->fmt_size));
+	i = -1;
+	while (++i < list->items.length)
+		VEC_NTH(&list->items, i, t_fileinfo *)->fmt_size_pad = padding;
 }
