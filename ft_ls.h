@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 19:55:55 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 16:18:09 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ void			fileinfo_format_mtime(t_fileinfo *fi);
 void			fileinfo_format_name(t_fileinfo *fi);
 
 void			ls_pre_main(t_vec *list);
+
+void			ls_main_singles(t_fileinfo **fi, int count, bool newline_after);
+void			ls_main_dirs(t_fileinfo **fi, int count);
 
 #endif
