@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 16:20:38 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:11:21 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		ls_pre_main_2(t_fileinfo **fi, int total)
 		count++;
 	}
 	if (count > 0)
-		ls_main_singles(&fi[0], count, count != total);
+		ls_main_singles(&fi[0], count);
 	count = 0;
 	while (i < total && S_ISDIR(fi[i]->stat.st_mode))
 	{
@@ -46,7 +46,7 @@ static void		ls_pre_main_2(t_fileinfo **fi, int total)
 		count++;
 	}
 	if (count > 0)
-		ls_main_dirs(&fi[i - count], count);
+		ls_main_dirs(&fi[i - count], count, count != total);
 }
 
 void			ls_pre_main(t_vec *vec)
