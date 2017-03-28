@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 19:59:44 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:24:22 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/28 17:08:23 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void			ls_main_dirs(t_fileinfo **fi, int count, bool x)
 	{
 		__builtin_strcpy(list.path, fi[i]->name);
 		list.print_path = count > 1 || x;
+		vec_init(&list.items);
 		ls_readdir(&list);
 		ls(&list);
 		vec_free(&list.items, true);
