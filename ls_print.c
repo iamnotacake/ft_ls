@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:53:45 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:59:52 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 19:42:43 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ static void		ls_print_list_prepare(t_list *list)
 	ls_print_list_prepare_owner_name_pad(list);
 	ls_print_list_prepare_owner_group_pad(list);
 	ls_print_list_prepare_size_pad(list);
+	ls_count_blocks(list);
 }
 
 void			ls_print_list(t_list *list)
 {
 	if (g_params['\n'])
 		ft_printf("\n");
+	ls_print_list_prepare(list);
 	if (list->print_path)
 		ft_printf("%s:\n", list->path);
-	/* ft_printf("*** %d items\n", list->items.length); */
-	ls_print_list_prepare(list);
+	if (list->path[0])
+		ft_printf("total %d\n", list->nblocks * 8); // TODO
 	vec_iter(&list->items, ls_print_list_callback);
 	g_params['\n'] = true;
 }

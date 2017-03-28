@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:11:21 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 19:41:59 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ static int		ls_pre_main_sort_callback(const void *a, const void *b)
 		(!S_ISDIR(fi1->stat.st_mode) && !S_ISDIR(fi2->stat.st_mode)))
 		return (__builtin_strcmp(fi1->name, fi2->name));
 	return (S_ISDIR(fi1->stat.st_mode) ? 1 : -1);
+}
+
+void			ls_count_blocks(t_list *list)
+{
+	int			i;
+	int			size;
+
+	list->nblocks = 0;
+	i = -1;
+	while (++i < list->items.length)
+	{
+		size = VEC_NTH(&list->items, i, t_fileinfo *)->stat.st_size;
+		list->nblocks += size / 4096 + ((size % 4096) ? 1 : 0);
+		/* ft_printf("% 4d => %d\n", size, size / 4096 + ((size % 4096) ? 1 : 0)); */
+	}
 }
 
 static void		ls_pre_main_2(t_fileinfo **fi, int total)
