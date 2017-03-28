@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 16:17:26 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/24 17:07:20 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/28 17:40:05 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,20 @@ static char		fileinfo_format_perms_type(t_fileinfo *fi)
 	return ('-');
 }
 
-static char		fileinfo_format_perms_exec(t_fileinfo *fi, int who)
+static char		fileinfo_format_perms_exec(t_fileinfo *fi, int who, int check)
 {
 	if (fi->stat.st_mode & who)
 		return ('s');
-	if (fi->stat.st_mode & S_IXUSR)
+	if (fi->stat.st_mode & check)
+		return ('x');
+	return ('-');
+}
+
+static char		fileinfo_format_perms_sticky_bit(t_fileinfo *fi)
+{
+	if (fi->stat.st_mode & S_ISVTX)
+		return ('t');
+	if (fi->stat.st_mode & S_IXOTH)
 		return ('x');
 	return ('-');
 }
@@ -42,12 +51,12 @@ void			fileinfo_format_perms(t_fileinfo *fi)
 				fileinfo_format_perms_type(fi),
 				fi->stat.st_mode & S_IRUSR ? 'r' : '-',
 				fi->stat.st_mode & S_IWUSR ? 'w' : '-',
-				fileinfo_format_perms_exec(fi, S_ISUID),
+				fileinfo_format_perms_exec(fi, S_ISUID, S_IXUSR),
 				fi->stat.st_mode & S_IRGRP ? 'r' : '-',
 				fi->stat.st_mode & S_IWGRP ? 'w' : '-',
-				fileinfo_format_perms_exec(fi, S_ISGID),
+				fileinfo_format_perms_exec(fi, S_ISGID, S_IXGRP),
 				fi->stat.st_mode & S_IROTH ? 'r' : '-',
 				fi->stat.st_mode & S_IWOTH ? 'w' : '-',
-				fi->stat.st_mode & S_IXOTH ? 'x' : '-',
+				fileinfo_format_perms_sticky_bit(fi),
 				fi->xattr[0] != '\0' ? '@' : ' ');
 }
