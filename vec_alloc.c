@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 16:07:41 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/25 16:43:56 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/28 16:44:21 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void			vec_free(t_vec *vec, bool free_elems)
 			free(vec->data[i++]);
 	}
 	if (vec->capacity > 0)
-	{
 		free(vec->data);
-		vec_init(vec);
-	}
+	vec_init(vec);
 }
