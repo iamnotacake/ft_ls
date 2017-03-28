@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 18:57:02 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/26 19:24:19 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_list
 	bool		print_path;
 	t_fileinfo	fileinfo;
 	t_vec		items;
+	int			nblocks;
 }				t_list;
 
 bool			g_params[256];
@@ -74,6 +75,7 @@ void			fileinfo_format_size(t_fileinfo *fi);
 void			fileinfo_format_mtime(t_fileinfo *fi);
 void			fileinfo_format_name(t_fileinfo *fi);
 
+void			ls_count_blocks(t_list *list);
 void			ls_pre_main(t_vec *list);
 
 void			ls_main_singles(t_fileinfo **fi, int count);
