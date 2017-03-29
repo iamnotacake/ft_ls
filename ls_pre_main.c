@@ -6,10 +6,11 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 14:25:56 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 14:40:55 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_ls.h"
 
 static int		ls_pre_main_sort_callback(const void *a, const void *b)
@@ -70,8 +71,13 @@ void			ls_pre_main(t_vec *vec)
 	while (i < vec->length)
 	{
 		fi = (t_fileinfo *)malloc(sizeof(t_fileinfo));
-		fileinfo_get(fi, vec->data[i], true);
-		vec_push(&items, fi);
+		if (fileinfo_get(fi, vec->data[i], true))
+			vec_push(&items, fi);
+		else
+		{
+			ft_printf("ft_ls: %s: ", fi->name);
+			perror(NULL);
+		}
 		i++;
 	}
 	vec_sort_qsort(&items, ls_pre_main_sort_callback);

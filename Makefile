@@ -6,7 +6,7 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/24 13:09:20 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/26 18:43:37 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/28 17:18:45 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SOURCES = main.c \
 		  ls_pre_main.c \
 		  ls_main.c \
 		  ls_print.c \
-		  ls_print_prepare.c
+		  ls_print_prepare.c \
+		  sort.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = ft_ls
 

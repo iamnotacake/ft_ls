@@ -6,11 +6,12 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 19:59:44 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/28 17:08:23 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 14:32:01 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <dirent.h>
+#include <stdio.h>
 #include "ft_ls.h"
 
 static void		ls_readdir(t_list *list)
@@ -21,7 +22,10 @@ static void		ls_readdir(t_list *list)
 	char			fullname[1024];
 
 	if ((dir = opendir(list->path)) == NULL)
+	{
+		perror("ft_ls");
 		return ;
+	}
 	while ((entry = readdir(dir)) != NULL)
 	{
 		if (entry->d_name[0] == '.' && !g_params['a'])
@@ -34,12 +38,16 @@ static void		ls_readdir(t_list *list)
 		vec_push(&list->items, fi);
 	}
 	closedir(dir);
+	vec_sort_qsort(&list->items, ls_sort_by_name_callback);
 }
 
 static void		ls(t_list *list)
 {
 	ls_print_list(list);
-	// TODO: Read recursive if has -R
+	if (g_params['R'])
+	{
+
+	}
 }
 
 void			ls_main_singles(t_fileinfo **fi, int count)

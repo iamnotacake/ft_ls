@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 19:24:19 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/28 17:16:34 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ void			ls_print_list_prepare_nlinks_pad(t_list *list);
 void			ls_print_list_prepare_owner_name_pad(t_list *list);
 void			ls_print_list_prepare_owner_group_pad(t_list *list);
 void			ls_print_list_prepare_size_pad(t_list *list);
+
+int				ls_sort_by_name_callback(const void *a, const void *b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:53:45 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 19:42:43 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 14:23:17 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void		ls_print_list_callback(void *arg)
 	t_fileinfo	*fi;
 
 	fi = (t_fileinfo *)arg;
-	// TODO: Add paddings to struct and here
 	ft_printf("%s", fi->fmt_perms);
 	ft_printf("%*s", fi->fmt_nlinks_pad, fi->fmt_nlinks);
 	ft_printf("%-*s", fi->fmt_owner_name_pad, fi->fmt_owner_name);
@@ -53,7 +52,7 @@ void			ls_print_list(t_list *list)
 	if (list->print_path)
 		ft_printf("%s:\n", list->path);
 	if (list->path[0])
-		ft_printf("total %d\n", list->nblocks * 8); // TODO
+		ft_printf("total %d\n", list->nblocks); // TODO
 	vec_iter(&list->items, ls_print_list_callback);
 	g_params['\n'] = true;
 }
