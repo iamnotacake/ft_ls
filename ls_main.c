@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 19:59:44 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 17:50:58 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:26:44 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void		ls_recursive_callback(void *arg)
 		ls_main_dirs(&fi, 1, true);
 }
 
-static void		ls(t_list *list)
+static void		ls(t_list *list, bool no_total)
 {
-	ls_print_list(list);
+	ls_print_list(list, no_total);
 	if (g_params['R'])
 		vec_iter(&list->items, ls_recursive_callback);
 }
@@ -69,7 +69,7 @@ void			ls_main_singles(t_fileinfo **fi, int count)
 	i = 0;
 	while (i < count)
 		vec_push(&list.items, fi[i++]);
-	ls(&list);
+	ls(&list, true);
 	vec_free(&list.items, false);
 }
 
@@ -85,7 +85,7 @@ void			ls_main_dirs(t_fileinfo **fi, int count, bool x)
 		list.print_path = count > 1 || x;
 		vec_init(&list.items);
 		ls_readdir(&list);
-		ls(&list);
+		ls(&list, false);
 		vec_free(&list.items, true);
 		i++;
 	}

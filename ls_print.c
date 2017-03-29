@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:53:45 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:51:53 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:25:35 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static void		ls_print_list_prepare(t_list *list)
 	ls_count_blocks(list);
 }
 
-void			ls_print_list(t_list *list)
+void			ls_print_list(t_list *list, bool no_total)
 {
 	if (g_params['\n'])
 		ft_printf("\n");
 	ls_print_list_prepare(list);
 	if (list->print_path)
 		ft_printf("%s:\n", list->path);
-	if (list->path[0] && g_params['l'] && list->items.length > 0)
+	if (list->path[0] && g_params['l'] && list->items.length > 0 && !no_total)
 		ft_printf("total %d\n", list->nblocks);
 	vec_iter(&list->items, ls_print_list_callback);
 	g_params['\n'] = true;

@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:22:24 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:25:51 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			ls_pre_main(t_vec *list);
 void			ls_main_singles(t_fileinfo **fi, int count);
 void			ls_main_dirs(t_fileinfo **fi, int count, bool x);
 
-void			ls_print_list(t_list *list);
+void			ls_print_list(t_list *list, bool no_total);
 
 void			ls_print_list_prepare_nlinks_pad(t_list *list);
 void			ls_print_list_prepare_owner_name_pad(t_list *list);
