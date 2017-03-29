@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 19:59:44 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:48:23 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 17:50:58 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ static void		ls_recursive_callback(void *arg)
 	t_fileinfo	*fi;
 
 	fi = (t_fileinfo *)arg;
-	if (S_ISDIR(fi->stat.st_mode))
+	if (S_ISDIR(fi->stat.st_mode) &&
+		__builtin_strcmp(fi->name, ".") != 0 &&
+		__builtin_strcmp(fi->name, "..") != 0)
 		ls_main_dirs(&fi, 1, true);
 }
 
