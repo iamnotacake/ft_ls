@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 19:20:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 17:43:43 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 17:56:41 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void			fileinfo_format_mtime(t_fileinfo *fi)
 	__builtin_strcpy(tm_now, tm);
 	tm = ctime(&fi->stat.st_mtime);
 	__builtin_strcpy(tm_file, tm);
-	same_year = time_now - fi->stat.st_mtime < 60 * 60 * 24 * 182;
+	same_year = time_now - fi->stat.st_mtime < 60 * 60 * 24 * 182 ||
+	 			__builtin_strncmp(tm_now + 20, tm_file + 20, 4) == 0;
 	ft_sprintf(fi->fmt_mtime, "%.7s%.5s ",
 				tm_file + 4, same_year ? tm_file + 11 : tm_file + 19);
 }
