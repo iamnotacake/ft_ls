@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/26 19:41:59 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 14:25:56 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,11 @@ static int		ls_pre_main_sort_callback(const void *a, const void *b)
 void			ls_count_blocks(t_list *list)
 {
 	int			i;
-	int			size;
 
 	list->nblocks = 0;
 	i = -1;
 	while (++i < list->items.length)
-	{
-		size = VEC_NTH(&list->items, i, t_fileinfo *)->stat.st_size;
-		list->nblocks += size / 4096 + ((size % 4096) ? 1 : 0);
-		/* ft_printf("% 4d => %d\n", size, size / 4096 + ((size % 4096) ? 1 : 0)); */
-	}
+		list->nblocks += VEC_NTH(&list->items, i, t_fileinfo *)->stat.st_blocks;
 }
 
 static void		ls_pre_main_2(t_fileinfo **fi, int total)
