@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:13:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:12:59 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 16:11:51 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,35 @@
 
 int				ls_sort_by_name_callback(const void *a, const void *b)
 {
-	const char	*x;
-	const char	*y;
+	t_fileinfo	*fi1;
+	t_fileinfo	*fi2;
 
-	x = (*(t_fileinfo **)a)->name;
-	y = (*(t_fileinfo **)b)->name;
+	fi1 = (*(t_fileinfo **)a);
+	fi2 = (*(t_fileinfo **)b);
 	if (g_params['r'])
-		return (__builtin_strcmp(y, x));
+		return (__builtin_strcmp(fi2->name, fi1->name));
 	else
-		return (__builtin_strcmp(x, y));
+		return (__builtin_strcmp(fi1->name, fi2->name));
 }
 
 int				ls_sort_by_mtime_callback(const void *a, const void *b)
 {
-	time_t	x;
-	time_t	y;
+	t_fileinfo	*fi1;
+	t_fileinfo	*fi2;
+	time_t		x;
+	time_t		y;
+	long		time_diff;
 
-	x = (*(t_fileinfo **)a)->stat.st_mtime;
-	y = (*(t_fileinfo **)b)->stat.st_mtime;
-	if (g_params['r'])
-		return (x - y);
-	else
-		return (y - x);
+	fi1 = (*(t_fileinfo **)a);
+	fi2 = (*(t_fileinfo **)b);
+	x = fi1->stat.st_mtime;
+	y = fi2->stat.st_mtime;
+	time_diff = g_params['r'] ? x - y : y - x;
+	if (time_diff < 0)
+		return (-1);
+	if (time_diff > 0)
+		return (1);
+	return (__builtin_strcmp(fi1->name, fi2->name));
 }
 
 void			ls_sort(t_vec *vec)
