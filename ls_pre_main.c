@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:02:14 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 16:42:27 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void			ls_pre_main(t_vec *vec)
 			vec_push(&items, fi);
 		else
 		{
-			ft_printf("ft_ls: %s: ", fi->name);
+			ft_fdprintf(2, "ft_ls: %s: ", fi->name);
 			perror(NULL);
 			err = true;
 		}
