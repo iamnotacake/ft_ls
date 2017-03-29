@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:09:08 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 14:40:55 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:02:14 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			ls_count_blocks(t_list *list)
 		list->nblocks += VEC_NTH(&list->items, i, t_fileinfo *)->stat.st_blocks;
 }
 
-static void		ls_pre_main_2(t_fileinfo **fi, int total)
+static void		ls_pre_main_2(t_fileinfo **fi, int total, bool x)
 {
 	int			i;
 	int			count;
@@ -57,7 +57,7 @@ static void		ls_pre_main_2(t_fileinfo **fi, int total)
 		count++;
 	}
 	if (count > 0)
-		ls_main_dirs(&fi[i - count], count, count != total);
+		ls_main_dirs(&fi[i - count], count, count != total || x);
 }
 
 void			ls_pre_main(t_vec *vec)
@@ -65,7 +65,9 @@ void			ls_pre_main(t_vec *vec)
 	t_vec		items;
 	t_fileinfo	*fi;
 	int			i;
+	bool		err;
 
+	err = false;
 	vec_init(&items);
 	i = 0;
 	while (i < vec->length)
@@ -77,10 +79,11 @@ void			ls_pre_main(t_vec *vec)
 		{
 			ft_printf("ft_ls: %s: ", fi->name);
 			perror(NULL);
+			err = true;
 		}
 		i++;
 	}
 	vec_sort_qsort(&items, ls_pre_main_sort_callback);
-	ls_pre_main_2((t_fileinfo **)items.data, items.length);
+	ls_pre_main_2((t_fileinfo **)items.data, items.length, err);
 	vec_free(&items, true);
 }

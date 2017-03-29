@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 19:59:44 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 14:32:01 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:06:54 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ static void		ls_readdir(t_list *list)
 		vec_push(&list->items, fi);
 	}
 	closedir(dir);
-	vec_sort_qsort(&list->items, ls_sort_by_name_callback);
+	ls_sort(&list->items);
+}
+
+static void		ls_recursive_callback(void *arg)
+{
+	// TODO
 }
 
 static void		ls(t_list *list)
