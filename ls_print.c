@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 18:53:45 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 14:46:39 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:51:53 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			ls_print_list(t_list *list)
 	ls_print_list_prepare(list);
 	if (list->print_path)
 		ft_printf("%s:\n", list->path);
-	if (list->path[0] && g_params['l'])
+	if (list->path[0] && g_params['l'] && list->items.length > 0)
 		ft_printf("total %d\n", list->nblocks);
 	vec_iter(&list->items, ls_print_list_callback);
 	g_params['\n'] = true;

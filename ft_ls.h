@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:09:42 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 15:06:54 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:22:24 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_fileinfo
 	struct group	*grp;
 	char			xattr[4096];
 	char			name[256];
+	char			fullname[512];
 	char			lnk_dest[256];
 	char			fmt_perms[16];
 	char			fmt_nlinks[8];

@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 16:02:47 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/29 14:41:42 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:23:05 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static char		*fullname_to_filename(const char *fullname)
 bool			fileinfo_get(t_fileinfo *fi, const char *filename, bool single)
 {
 	__builtin_bzero(fi, sizeof(t_fileinfo));
+	__builtin_strcpy(fi->fullname, filename);
 	__builtin_strcpy(fi->name,
 						single ? filename : fullname_to_filename(filename));
 	if (lstat(filename, &fi->stat) == -1)
